@@ -5,16 +5,16 @@ import { isIncludeNode } from "./nodes";
 import { parse } from "./parser";
 import { visit } from "./visit";
 
-type Graph = {
+type DependencyGraph = {
   name: string;
-  dependencies: Graph[];
+  dependencies: DependencyGraph[];
 };
 
-export function analyze(
+export function analyzeIncludeDirective(
   ftlFileName: string,
   baseDir: string,
-  graph: Graph = { name: ftlFileName, dependencies: [] }
-): Graph {
+  graph: DependencyGraph = { name: ftlFileName, dependencies: [] }
+): DependencyGraph {
   const ftlFilePath = path.join(baseDir, ftlFileName);
   const ftlFileData = fs.readFileSync(ftlFilePath, "utf-8");
   const ast = parse(ftlFileData);
@@ -25,7 +25,9 @@ export function analyze(
       isLiteralExpression(node.params) &&
       typeof node.params.value === "string"
     ) {
-      graph.dependencies.push(analyze(node.params.value, baseDir));
+      graph.dependencies.push(
+        analyzeIncludeDirective(node.params.value, baseDir)
+      );
     }
   });
   return graph;

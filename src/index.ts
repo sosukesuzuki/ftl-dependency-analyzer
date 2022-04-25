@@ -1,5 +1,8 @@
 import path from "node:path";
-import { analyze } from "./analyze";
+import { analyzeIncludeDirective } from "./analyze";
 
-const res = analyze("includes-01.ftl", path.join(process.cwd(), "fixtures"));
-console.log(JSON.stringify(res));
+const fileName = "includes-01.ftl";
+const baseDir = path.join(process.cwd(), "fixtures");
+const res = analyzeIncludeDirective(fileName, baseDir);
+
+console.log(JSON.stringify(res, null, 2));
