@@ -11,7 +11,12 @@ function runNode(filePath) {
 }
 
 for (const testFilePath of testFilePaths) {
-  const result = runNode(testFilePath);
-  console.log(result.stdout);
+  try {
+    const result = runNode(testFilePath);
+    console.log(result.stdout);
+  } catch (e) {
+    console.log(e.stdout);
+  }
+
   console.log("\n-----------\n");
 }
