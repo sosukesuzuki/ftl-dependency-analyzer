@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "description": "",
   "exports": {
-    ".": "./dist/index.js"
+    ".": "./lib/index.js"
   },
   "scripts": {
     "lint": "run-p lint:*",
