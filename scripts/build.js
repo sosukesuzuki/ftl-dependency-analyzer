@@ -1,6 +1,7 @@
 import { build } from "esbuild";
 import path from "node:path";
 import fs from "node:fs";
+import { globbySync } from "globby";
 
 const pkg = JSON.parse(
   fs.readFileSync(path.join(process.cwd(), "package.json"), "utf-8")
@@ -8,16 +9,28 @@ const pkg = JSON.parse(
 
 const external = Object.keys(pkg.dependencies ?? []);
 
+const mode = process.env.MODE ?? "source";
+
+const io = {
+  source: {
+    entryPoints: ["./src/index.ts"],
+    outfile: "./dist/index.js",
+  },
+  test: {
+    entryPoints: globbySync("./tests/*.spec.ts"),
+    outdir: "./test-dist",
+  },
+};
+
 /** @type {import('esbuild').BuildOptions} */
 const options = {
-  entryPoints: ["./src/index.ts"],
   minify: true,
   bundle: true,
-  outfile: "./dist/index.js",
   target: "node14.19",
   platform: "node",
   format: "esm",
   external,
+  ...io[mode],
 };
 
 if (process.env.WATCH === "true") {
