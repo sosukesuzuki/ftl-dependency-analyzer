@@ -18,7 +18,7 @@ export function visit(ast: Node, callback: (node: Node) => void) {
   callback(ast);
   if (isProgramNode(ast) || isAttemptNode(ast)) {
     for (const node of ast.body) {
-      callback(node);
+      visit(node, callback);
     }
   } else if (
     isAssignNode(ast) ||
@@ -29,34 +29,34 @@ export function visit(ast: Node, callback: (node: Node) => void) {
   ) {
     if (ast.body) {
       for (const node of ast.body) {
-        callback(node);
+        visit(node, callback);
       }
     }
   } else if (isConditionNode(ast)) {
     for (const node of ast.consequent) {
-      callback(node);
+      visit(node, callback);
     }
     if (ast.alternate) {
       for (const node of ast.alternate) {
-        callback(node);
+        visit(node, callback);
       }
     }
   } else if (isListNode(ast)) {
     for (const node of ast.body) {
-      callback(node);
+      visit(node, callback);
     }
     if (ast.fallback) {
       for (const node of ast.body) {
-        callback(node);
+        visit(node, callback);
       }
     }
   } else if (isSwitchCaseNode(ast) || isSwitchDefaultNode(ast)) {
     for (const node of ast.consequent) {
-      callback(node);
+      visit(node, callback);
     }
   } else if (isSwitchNode(ast)) {
     for (const node of ast.cases) {
-      callback(node);
+      visit(node, callback);
     }
   }
 }
