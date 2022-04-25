@@ -1,6 +1,6 @@
 {
   "type": "module",
-  "name": "ftl-dependencies-analyzer",
+  "name": "ftl-dependency-analyzer",
   "version": "1.0.0",
   "description": "",
   "exports": {

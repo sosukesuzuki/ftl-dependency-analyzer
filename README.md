@@ -1,1 +1,1 @@
-# ftl-dependencies-analyzer
+# ftl-dependency-analyzer
