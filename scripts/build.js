@@ -14,7 +14,7 @@ const mode = process.env.MODE ?? "source";
 const io = {
   source: {
     entryPoints: ["./src/index.ts"],
-    outfile: "./dist/index.js",
+    outfile: "./lib/index.js",
   },
   test: {
     entryPoints: globbySync("./tests/*.spec.ts"),
