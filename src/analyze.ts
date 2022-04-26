@@ -5,7 +5,7 @@ import { isIncludeNode } from "./nodes";
 import { parse } from "./parser";
 import { visit } from "./visit";
 
-type DependencyGraph = {
+export type DependencyGraph = {
   name: string;
   dependencies: DependencyGraph[];
 };

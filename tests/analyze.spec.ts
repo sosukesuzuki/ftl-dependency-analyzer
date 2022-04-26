@@ -20,6 +20,10 @@ test("analyzeIncludeDirective", () => {
           },
         ],
       },
+      {
+        name: "/basic-03.ftl",
+        dependencies: [],
+      },
     ],
   };
   const result = analyzeIncludeDirective("includes-01.ftl", getFixturesPath());
