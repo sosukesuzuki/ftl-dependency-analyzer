@@ -1,5 +1,7 @@
 import { DependencyGraph } from "./analyze";
 
+export type Viewer = (graph: DependencyGraph) => string;
+
 export function viewTree(graph: DependencyGraph) {
   function view(graph: DependencyGraph, level = 0): string {
     const node = `|--${graph.name}\n`;

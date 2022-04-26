@@ -35,6 +35,7 @@
     "typescript": "^4.6.3"
   },
   "dependencies": {
-    "freemarker-parser": "^1.2.1"
+    "freemarker-parser": "^1.2.1",
+    "meow": "^10.1.2"
   }
 }
