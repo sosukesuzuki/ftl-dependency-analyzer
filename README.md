@@ -26,3 +26,7 @@ $ ftl-dependency-analyze ./src/index.ftl
 ### `visit`
 
 ### `analyzeIncludeDirective`
+
+## Development
+
+Require Node.js 18.
