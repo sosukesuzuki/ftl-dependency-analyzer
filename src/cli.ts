@@ -63,7 +63,7 @@ function processCli(input: string, flags: TypedFlags<Flags>) {
     throw new Error(`${flags.base} not found.`);
   }
 
-  const graph = analyzeIncludeDirective(path.basename(input), baseDirPath);
+  const graph = analyzeIncludeDirective(input, baseDirPath);
   const viewer = getViewer(flags.format);
   const result = viewer(graph);
 

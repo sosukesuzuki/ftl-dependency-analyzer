@@ -10,12 +10,17 @@ export type DependencyGraph = {
   dependencies: DependencyGraph[];
 };
 
+let isFirst = true;
+
 export function analyzeIncludeDirective(
   ftlFileName: string,
   baseDir: string,
   graph: DependencyGraph = { name: ftlFileName, dependencies: [] }
 ): DependencyGraph {
-  const ftlFilePath = path.join(baseDir, ftlFileName);
+  const ftlFilePath = isFirst ? ftlFileName : path.join(baseDir, ftlFileName);
+  if (isFirst) {
+    isFirst = false;
+  }
   const ftlFileData = fs.readFileSync(ftlFilePath, "utf-8");
   const ast = parse(ftlFileData);
   visit(ast, (node) => {
