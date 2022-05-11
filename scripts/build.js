@@ -18,7 +18,7 @@ const io = {
   },
   test: {
     entryPoints: globbySync("./tests/*.spec.ts"),
-    outdir: "./test-dist",
+    outdir: "./test",
   },
 };
 
