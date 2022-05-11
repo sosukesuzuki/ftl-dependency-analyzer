@@ -18,8 +18,7 @@
     "build": "run-p build:*",
     "build:esbuild": "node --experimental-json-modules ./scripts/build.js",
     "build:dts": "tsc --declaration --emitDeclarationOnly",
-    "build:test": "MODE=test npm run build:esbuild",
-    "test": "npm run build:test && node --test"
+    "test": "MODE=test npm run build:esbuild && node --test"
   },
   "keywords": [],
   "author": "",
