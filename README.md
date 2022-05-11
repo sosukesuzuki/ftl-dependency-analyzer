@@ -13,6 +13,7 @@ $ ftl-dependency-analyze ./src/index.ftl
   |--/basic-03.ftl
 
 ```
+
 ### Options
 
 #### `--format`, `-f`
@@ -29,4 +30,4 @@ $ ftl-dependency-analyze ./src/index.ftl
 
 ## Development
 
-Require Node.js 18.
+Require Node.js 18.1.
